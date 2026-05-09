@@ -36,14 +36,14 @@ let initialised = false;
 // Converts a raw API node into a UI node with checked state.
 // If a saved cookie exists, restores the checked state from it;
 // otherwise defaults to false.
+
 function enhanceTree(node, cookie_conventions = {}) {
     return {
-        id: node.id,
-        name: node.name,
+        ...node,
         checked: cookie_conventions.hasOwnProperty(node.id)
             ? cookie_conventions[node.id]
             : false,
-        children: node.children.map(child => enhanceTree(child, cookie_conventions))
+        children: node.children?.map(child => enhanceTree(child, cookie_conventions))
     };
 }
 
@@ -79,16 +79,16 @@ function selectChild(parentName, childId) {
     if ($save_selection) {
         saveConventionCookie($conventions);
     }
-}
-
-function selectInTree(nodes, parentName, childId) {
+}function selectInTree(nodes, parentName, childId) {
     return nodes.map(node => {
         if (node.name === parentName) {
             return {
                 ...node,
                 children: node.children.map(child => ({
                     ...child,
-                    checked: child.id === childId
+                    checked: node.any
+                        ? child.id === childId ? !child.checked : child.checked  // toggle individual
+                        : child.id === childId  // radio — only one
                 }))
             };
         }

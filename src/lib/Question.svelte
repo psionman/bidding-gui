@@ -150,8 +150,6 @@ function getBidHTML(bid) {
 }
 
 function showCorrectWrong(bid) {
-    console.log(bid_html);
-    console.log($correct_response);
     show_correct = false;
     show_wrong = false;
     if (!(bid === '')) {

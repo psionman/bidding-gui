@@ -53,7 +53,7 @@ async function bidding() {
 function reduceTree(nodes, findChecked, acc = {}) {
     for (const node of nodes) {
         findChecked(node, acc);
-        if (node.children?.length > 0) {
+        if (node.checked && node.children?.length > 0) {
             reduceTree(node.children, findChecked, acc);
         }
     }

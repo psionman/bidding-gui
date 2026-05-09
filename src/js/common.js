@@ -24,7 +24,6 @@ export async function getNewQuestion() {
     options.set(response.options);
     correct_response.set(response.correct_response);
     convention_description.set(response.description)
-    console.log(response.correct_response);
 }
 
 export function saveConventionCookie(tree) {

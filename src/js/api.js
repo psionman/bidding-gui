@@ -93,6 +93,7 @@ export async function getConventions() {
     let uri = 'get-conventions'
     let data = {}
     const response = await postDataToAPI(uri, data)
+    console.log(response.conventions);
     return response.conventions
 }
 
