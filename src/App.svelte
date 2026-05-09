@@ -22,6 +22,7 @@
 </style>
 
 <script>
+import { get } from 'svelte/store';
 import SaveSection from "./lib/SaveSection.svelte";
 import Selector from "./lib/Selector.svelte";
 import Question from "./lib/Question.svelte";
@@ -33,6 +34,7 @@ import {
     selected_conventions,
     show_save,
     show_save_section,
+    question,
 } from './js/data-store'
 import { getNewQuestion } from "./js/common";
 
@@ -44,7 +46,12 @@ async function bidding() {
     }
     $selected_conventions = selected;
 
-    getNewQuestion()
+    await getNewQuestion()
+    var _question = get(question);
+    if ( typeof _question == 'undefined' ) {
+        return;
+    }
+
     $selector_visible = false;
     $question_visible = true;
     $show_save = false;

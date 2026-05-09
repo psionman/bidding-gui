@@ -80,6 +80,7 @@ async function postDataToAPI(uri, params = null) {
         const data = await response.json();
         if ('error' in data) {
             alert(`Error: ${data.error}`)
+            return data;
         }
         return data;
     } catch (err) {
@@ -90,16 +91,15 @@ async function postDataToAPI(uri, params = null) {
 }
 
 export async function getConventions() {
-    let uri = 'get-conventions'
-    let data = {}
-    const response = await postDataToAPI(uri, data)
-    console.log(response.conventions);
-    return response.conventions
+    let uri = 'get-conventions';
+    let data = {};
+    const response = await postDataToAPI(uri, data);
+    return response.conventions;
 }
 
 export async function conventionsSelected(conventions=[]) {
-    let uri = 'conventions-selected'
-    let data = {conventions: conventions}
-    const response = await postDataToAPI(uri, data)
-    return response
+    let uri = 'conventions-selected';
+    let data = {conventions: conventions};
+    const response = await postDataToAPI(uri, data);
+    return response;
 }
