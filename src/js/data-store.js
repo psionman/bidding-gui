@@ -18,6 +18,7 @@ export let selector_visible = writable(true);
 export let question_visible = writable(false);
 export let description_visible = writable(false);
 
+export let theme = writable('');
 export let title = writable('');
 export let subtitle = writable('');
 export let preamble = writable('');

@@ -1,9 +1,10 @@
 <main>
-    {#if $hide_title}
         <h1>Bidding practice</h1>
+    {#if $hide_title || !$title}
+        <h2>{$theme}</h2>
     {:else}
-        <h1>{$title}</h1>
-        <h3>{$subtitle}</h3>
+        <h2>{$theme} - {$title}</h2>
+        <!-- <h3>{$subtitle}</h3> -->
     {/if}
 
     {#if $question_visible}
@@ -98,6 +99,7 @@ import SaveSection from './SaveSection.svelte';
 import {selected_bid } from '../js/data-store'
 
 import {
+    theme,
     title,
     subtitle,
     preamble,

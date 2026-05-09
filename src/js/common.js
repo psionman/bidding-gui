@@ -2,6 +2,7 @@ import { get } from 'svelte/store';
 import Cookies from "js-cookie";
 import {
     selected_conventions,
+    theme,
     title,
     subtitle,
     preamble,
@@ -17,6 +18,7 @@ import { conventionsSelected } from './api';
 export async function getNewQuestion() {
     const response = await conventionsSelected(get(selected_conventions));
 
+    theme.set(response.theme);
     title.set(response.title);
     subtitle.set(response.subtitle);
     preamble.set(response.preamble);
