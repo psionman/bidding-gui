@@ -36,7 +36,9 @@ import {
     show_save_section,
     question,
 } from './js/data-store'
-import { getNewQuestion } from "./js/common";
+import { getNewQuestion, initialiseStaticData } from "./js/common";
+
+initialiseStaticData();
 
 async function bidding() {
     var checked_conventions = reduceTree($conventions, findChecked)
