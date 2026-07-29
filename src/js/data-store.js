@@ -13,6 +13,7 @@ export let show_save_section = writable(true);
 export let hide_title = writable(false);
 export let conventions = writable({});
 export let selected_conventions = writable([]);
+export let static_data = writable({});
 
 export let selector_visible = writable(true);
 export let question_visible = writable(false);
@@ -26,8 +27,11 @@ export let question = writable('');
 export let options = writable([]);
 export let correct_response = writable('');
 export let convention_description = writable('');
+export let hand_cards = writable([]);
 
 export let selected_bid = writable('');
 export let selected_level = writable(0);
 export let selected_denom = writable('');
 export let selected_modifier = writable('');
+export let scale = writable(0);
+export let canvas_sizes = writable({});

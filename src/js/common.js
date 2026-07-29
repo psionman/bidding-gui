@@ -10,9 +10,12 @@ import {
     options,
     correct_response,
     convention_description,
+    static_data,
+    hand_cards,
 } from './data-store';
 
-import { conventionsSelected } from './api';
+import { conventionsSelected, getStaticData } from './api';
+import { updateHandHTML } from './card-display';
 
 
 export async function getNewQuestion() {
@@ -25,7 +28,8 @@ export async function getNewQuestion() {
     question.set(response.question);
     options.set(response.options);
     correct_response.set(response.correct_response);
-    convention_description.set(response.description)
+    convention_description.set(response.description);
+    hand_cards.set(response.hand_cards);
 }
 
 export function saveConventionCookie(tree) {
@@ -45,3 +49,8 @@ export function buildCookieObject(tree, acc = {}) {
     }
     return acc;
 }
+
+export async function initialiseStaticData () {
+    let _static_data_raw = await getStaticData();
+    static_data.set(_static_data_raw);
+};

@@ -8,6 +8,7 @@ import { getOrRefreshCsrfToken } from './csrf';
 
 
 const API_DOMAIN = import.meta.env.VITE_API_DOMAIN;
+const STATIC_DATA = 'static-data';
 
 function getParams(data) {
 	// Build params for request
@@ -88,6 +89,11 @@ async function postDataToAPI(uri, params = null) {
         alert(`Error at ${uri}\n${err.message}`);
         throw err;
     }
+}
+
+export async function getStaticData() {
+    let static_data = await getDataFromAPI(STATIC_DATA);
+    return static_data;
 }
 
 export async function getConventions() {

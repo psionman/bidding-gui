@@ -31,6 +31,7 @@
                 {/each}
             </div>
         {/if}
+        <canvas id="hand-image"></canvas>
 
         {#if bid_html}
             Your selection: {@html bid_html}
@@ -91,9 +92,13 @@ main {
     font-size: 1.5vw;
     display: block;
 }
+#hand-image {
+    border: 2px solid black;
+}
 </style>
 
-<script>
+<script>import { onMount } from 'svelte';
+
 import BiddingBox from './BiddingBox.svelte';
 import SaveSection from './SaveSection.svelte';
 import {selected_bid } from '../js/data-store'
@@ -113,9 +118,11 @@ import {
     selected_denom,
     selected_level,
     selected_modifier,
+    hand_cards,
 }
 from '../js/data-store'
 import { getNewQuestion } from "../js/common";
+import { updateHandHTML } from "../js/card-display";
 
 let bid_html = '';
 let show_correct = false;
@@ -123,6 +130,10 @@ let show_wrong = false;
 let selected_option = ''
 
 $: getSelection($selected_bid);
+
+onMount(() => {
+    updateHandHTML();
+});
 
 function getSelection(bid) {
     bid_html = getBidHTML(bid)
