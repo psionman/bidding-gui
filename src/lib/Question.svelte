@@ -8,7 +8,21 @@
     {/if}
 
     {#if $question_visible}
-        {@html $preamble}<br>
+        <!-- {@html $preamble}<br> -->
+            <Auction />
+
+            {#if show_correct}
+                <div class="correct">Correct</div>
+            {/if}
+            {#if show_wrong}
+                <span class="wrong">Wrong</span>
+            {:else}
+                <span class="blank-line">&nbsp;</span>
+            {/if}
+            <p></p>
+        <div id="hand-container">
+            <canvas id="hand-image"></canvas>
+        </div>
         {$question}
 
         {#if $options == ''}
@@ -30,18 +44,6 @@
                     </span>
                 {/each}
             </div>
-        {/if}
-        <canvas id="hand-image"></canvas>
-
-        {#if bid_html}
-            Your selection: {@html bid_html}
-        {/if}
-
-        {#if show_correct}
-            <div class="correct">Correct</div>
-        {/if}
-        {#if show_wrong}
-            <span class="wrong">Wrong</span>
         {/if}
 
         <div class="buttons" id="next-button">
@@ -95,11 +97,15 @@ main {
 #hand-image {
     border: 2px solid black;
 }
+.blank-line {
+    font-size: 1.5vw;
+}
 </style>
 
 <script>import { onMount } from 'svelte';
 
 import BiddingBox from './BiddingBox.svelte';
+import Auction from './Auction.svelte';
 import SaveSection from './SaveSection.svelte';
 import {selected_bid } from '../js/data-store'
 
@@ -118,11 +124,13 @@ import {
     selected_denom,
     selected_level,
     selected_modifier,
-    hand_cards,
 }
 from '../js/data-store'
 import { getNewQuestion } from "../js/common";
-import { updateHandHTML } from "../js/card-display";
+import { displayHand } from "../js/card-display";
+import { setAuctionHTML} from "../js/auction";
+import { auction_calls } from "../js/data-store";
+    import { get } from 'svelte/store';
 
 let bid_html = '';
 let show_correct = false;
@@ -132,10 +140,16 @@ let selected_option = ''
 $: getSelection($selected_bid);
 
 onMount(() => {
-    updateHandHTML();
-});
+    displayHand();
+    setAuctionHTML()});
 
 function getSelection(bid) {
+    if (!bid) return;
+    const calls = get(auction_calls);
+    calls.pop();
+    calls.push(bid);
+    auction_calls.set(calls);
+    setAuctionHTML();
     bid_html = getBidHTML(bid)
     showCorrectWrong(bid)
 }
@@ -174,8 +188,10 @@ function showCorrectWrong(bid) {
     }
 }
 
-function nextQuestion() {
-    getNewQuestion()
+async function nextQuestion() {
+    await getNewQuestion();
+    displayHand();
+    setAuctionHTML(['cursor']);
     show_correct = false;
     show_wrong = false;
     bid_html = '';
@@ -188,6 +204,6 @@ function nextQuestion() {
 function displayConventionText() {
     $question_visible = false;
     $show_save_section = false;
-    $description_visible = true
+    $description_visible = true;
 }
 </script>

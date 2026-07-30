@@ -1,0 +1,5 @@
+[dev]
+  command = "npm run dev"
+  functions = "netlify/functions"
+  framework = "vite"  # if you're using Vite
+  # targetPort = 5173   # the port Vite serves on

@@ -72,7 +72,7 @@ export function getScale() {
     return scale;
 }
 
-export function updateHandHTML() {
+export function displayHand() {
     // Display all of the cards for a hand
     last_suit = '';
     suit_row = -1;

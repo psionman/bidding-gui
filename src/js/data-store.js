@@ -18,6 +18,7 @@ export let static_data = writable({});
 export let selector_visible = writable(true);
 export let question_visible = writable(false);
 export let description_visible = writable(false);
+export let auction_visible = writable(true);
 
 export let theme = writable('');
 export let title = writable('');
@@ -28,6 +29,7 @@ export let options = writable([]);
 export let correct_response = writable('');
 export let convention_description = writable('');
 export let hand_cards = writable([]);
+export let vulnerability = writable('');
 
 export let selected_bid = writable('');
 export let selected_level = writable(0);
@@ -35,3 +37,6 @@ export let selected_denom = writable('');
 export let selected_modifier = writable('');
 export let scale = writable(0);
 export let canvas_sizes = writable({});
+export let auction_image_html = writable('');
+export let dealer = writable('');
+export let auction_calls = writable([]);

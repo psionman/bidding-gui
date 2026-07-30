@@ -12,11 +12,12 @@ import {
     convention_description,
     static_data,
     hand_cards,
+    vulnerability,
+    dealer,
+    auction_calls,
 } from './data-store';
 
 import { conventionsSelected, getStaticData } from './api';
-import { updateHandHTML } from './card-display';
-
 
 export async function getNewQuestion() {
     const response = await conventionsSelected(get(selected_conventions));
@@ -30,6 +31,9 @@ export async function getNewQuestion() {
     correct_response.set(response.correct_response);
     convention_description.set(response.description);
     hand_cards.set(response.hand_cards);
+    vulnerability.set(response.vulnerability);
+    dealer.set(response.dealer);
+    auction_calls.set(response.auction);
 }
 
 export function saveConventionCookie(tree) {
