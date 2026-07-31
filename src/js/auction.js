@@ -1,5 +1,10 @@
 import { get } from 'svelte/store';
-import { vulnerability, auction_image_html, auction_calls } from './data-store';
+import { 
+    vulnerability, 
+    auction_image_html, 
+    auction_calls, 
+    dealer 
+} from './data-store';
 
 const VULNERABLE_COLOUR = '#f66';
 const NON_VULNERABLE_COLOUR = '#eee';
@@ -8,7 +13,7 @@ const SEATS = 'NESW';
 export function setAuctionHTML() {
     var innerHTML = seatsHTML();
     var html = '';
-    const call_names = get(auction_calls);
+    const call_names = CallNamesForAuction();
     for (var index = 0; index < call_names.length; index++) {
         var call_name = call_names[index];
         if (call_name == 'blank') {
@@ -61,4 +66,21 @@ function getSeatHTML(seat) {
     }
     let html = `<div class="contract-seat" style="background-color: ${seat_colour};" >${seat}</div>`;
     return html;
+}
+
+function CallNamesForAuction() {
+    var call_names = [];
+    var dealer_index = SEATS.indexOf(get(dealer));
+    for (var index = 0; index <= dealer_index-1; index++) {
+        call_names.push('blank')
+    }
+
+    for (var bid of get(auction_calls)) {
+        call_names.push(bid);
+    }
+
+    while (call_names.length < 4) {
+        call_names.push('blank');
+    }
+    return call_names;
 }

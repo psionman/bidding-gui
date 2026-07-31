@@ -8,21 +8,20 @@
     {/if}
 
     {#if $question_visible}
-        <!-- {@html $preamble}<br> -->
-            <Auction />
+        {#if $preamble_visible}
+            {@html $preamble}<br>
+        {/if}
 
-            {#if show_correct}
-                <div class="correct">Correct</div>
-            {/if}
-            {#if show_wrong}
-                <span class="wrong">Wrong</span>
-            {:else}
-                <span class="blank-line">&nbsp;</span>
-            {/if}
+        {#if $auction_visible}
+            <Auction />
+        {/if}
+
+        {#if $hand_visible}
             <p></p>
-        <div id="hand-container">
-            <canvas id="hand-image"></canvas>
-        </div>
+            <div id="hand-container">
+                <canvas id="hand-image"></canvas>
+            </div>
+        {/if}
         {$question}
 
         {#if $options == ''}
@@ -45,6 +44,13 @@
                 {/each}
             </div>
         {/if}
+            {#if show_correct}
+                    <div class="correct">Correct</div>
+                {:else if show_wrong}
+                    <span class="wrong">Wrong</span>
+                {:else}
+                    <span class="blank-line">&nbsp;</span>
+                {/if}
 
         <div class="buttons" id="next-button">
             <button class="select-button"
@@ -107,7 +113,10 @@ main {
 import BiddingBox from './BiddingBox.svelte';
 import Auction from './Auction.svelte';
 import SaveSection from './SaveSection.svelte';
-import {selected_bid } from '../js/data-store'
+import {
+    auction_visible, 
+    selected_bid, 
+    hand_visible } from '../js/data-store'
 
 import {
     theme,
@@ -118,6 +127,7 @@ import {
     options,
     question_visible,
     description_visible,
+    preamble_visible,
     hide_title,
     correct_response,
     show_save_section,

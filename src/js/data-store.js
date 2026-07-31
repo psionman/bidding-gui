@@ -18,7 +18,9 @@ export let static_data = writable({});
 export let selector_visible = writable(true);
 export let question_visible = writable(false);
 export let description_visible = writable(false);
-export let auction_visible = writable(true);
+export let auction_visible = writable(false);
+export let hand_visible = writable(false);
+export let preamble_visible = writable(false);
 
 export let theme = writable('');
 export let title = writable('');
@@ -40,3 +42,4 @@ export let canvas_sizes = writable({});
 export let auction_image_html = writable('');
 export let dealer = writable('');
 export let auction_calls = writable([]);
+

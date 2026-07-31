@@ -1,5 +1,3 @@
-
-
 <div id="save-section">
     <span id="save-widgets">
         <span class="checkbox-widgets">
@@ -45,7 +43,7 @@
 
 <script>
 import Cookies from "js-cookie";
-import { saveConventionCookie } from '../js/common'
+import { saveConventionCookie, resetData } from '../js/common'
 import {
     save_selection,
     hide_title,
@@ -80,5 +78,6 @@ function returnToSelection() {
     $selector_visible = true;
     $question_visible = false;
     $show_save = true;
+    resetData();
 }
 </script>

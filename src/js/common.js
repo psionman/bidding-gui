@@ -15,6 +15,9 @@ import {
     vulnerability,
     dealer,
     auction_calls,
+    auction_visible,
+    hand_visible,
+    preamble_visible,
 } from './data-store';
 
 import { conventionsSelected, getStaticData } from './api';
@@ -27,6 +30,7 @@ export async function getNewQuestion() {
     subtitle.set(response.subtitle);
     preamble.set(response.preamble);
     question.set(response.question);
+
     options.set(response.options);
     correct_response.set(response.correct_response);
     convention_description.set(response.description);
@@ -34,6 +38,23 @@ export async function getNewQuestion() {
     vulnerability.set(response.vulnerability);
     dealer.set(response.dealer);
     auction_calls.set(response.auction);
+    setElementsVisibility(response.display_elements);
+}
+
+function setElementsVisibility(display_elements) {
+    auction_visible.set(false);
+    hand_visible.set(false);
+    preamble_visible.set(false);
+
+    if (display_elements.includes('auction')) {
+        auction_visible.set(true);
+    }
+    if (display_elements.includes('hand')) {
+        hand_visible.set(true);
+    }
+    if (display_elements.includes('preamble')) {
+        preamble_visible.set(true);
+    }
 }
 
 export function saveConventionCookie(tree) {
@@ -58,3 +79,21 @@ export async function initialiseStaticData () {
     let _static_data_raw = await getStaticData();
     static_data.set(_static_data_raw);
 };
+
+export function resetData() {
+    selected_conventions.set([]);
+    theme.set("");
+    title.set("");
+    subtitle.set("");
+    preamble.set("");
+    question.set("");
+    options.set("");
+    correct_response.set("");
+    convention_description.set("");
+    hand_cards.set([]);
+    vulnerability.set("");
+    dealer.set("");
+    auction_calls.set([]);
+    auction_visible.set(false);
+    hand_visible.set(false);
+}   

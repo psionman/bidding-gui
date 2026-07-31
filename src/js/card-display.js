@@ -1,6 +1,12 @@
 
 import { get } from 'svelte/store';
-import { static_data, scale, canvas_sizes, hand_cards} from './data-store.js';
+import { 
+    static_data, 
+    scale, 
+    canvas_sizes, 
+    hand_cards,
+    hand_visible,
+} from './data-store.js';
 
 
 const STANDARD_SCALE = 0.5  // The maximum scaling factor
@@ -73,6 +79,9 @@ export function getScale() {
 }
 
 export function displayHand() {
+    if (!get(hand_visible)) {
+        return;
+    }
     // Display all of the cards for a hand
     last_suit = '';
     suit_row = -1;

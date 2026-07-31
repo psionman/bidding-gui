@@ -1,8 +1,8 @@
 
 {#if $auction_visible}
-    Dealer: {$dealer}
     <div id="main-panel"></div>
         <div id="auction-popup" class="display-panel">
+        <div id="dealer-display">Dealer: {$dealer}</div>
         <div id="auction-table-main">{@html $auction_image_html}</div>
         </div>
 {/if}
@@ -21,6 +21,11 @@
         margin-left: auto;
         margin-right: auto;
         background-color: #ccc;
+    }
+
+    #dealer-display {
+        margin-bottom: 1vh;
+        font-size: 2.2vh;
     }
 
     #auction-table-main{
