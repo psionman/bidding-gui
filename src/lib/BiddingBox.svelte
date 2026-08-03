@@ -194,16 +194,22 @@
 </style>
 
 <script>
+import { onMount } from 'svelte';
 import {
     selected_bid,
     selected_denom,
     selected_level,
     selected_modifier,
 } from '../js/data-store'
+import { buttonEnabler, enableDenomsAfterLevelSelected } from '../js/bidding';
 
 const BIDDING_LEVELS = [1, 2, 3, 4, 5, 6, 7]
 
 $selected_modifier = '';
+
+onMount(() => {
+    buttonEnabler();
+});
 
 function levelClicked(value) {
     if (value == 0) {
@@ -211,6 +217,7 @@ function levelClicked(value) {
     }
     $selected_level = value;
     $selected_bid = '';
+    enableDenomsAfterLevelSelected($selected_level);
 
     if ($selected_denom != "") {
         bidClicked();

@@ -15,7 +15,7 @@
         {#if $auction_visible}
             <Auction />
         {/if}
-
+        
         {#if $hand_visible}
             <p></p>
             <div id="hand-container">
@@ -121,7 +121,6 @@ import {
 import {
     theme,
     title,
-    subtitle,
     preamble,
     question,
     options,

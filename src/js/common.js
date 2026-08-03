@@ -1,4 +1,5 @@
 import { get } from 'svelte/store';
+import { tick } from 'svelte';
 import Cookies from "js-cookie";
 import {
     selected_conventions,
@@ -18,7 +19,9 @@ import {
     auction_visible,
     hand_visible,
     preamble_visible,
+    suppressed_bids,
 } from './data-store';
+import {buttonEnabler} from './bidding';
 
 import { conventionsSelected, getStaticData } from './api';
 
@@ -39,6 +42,9 @@ export async function getNewQuestion() {
     dealer.set(response.dealer);
     auction_calls.set(response.auction);
     setElementsVisibility(response.display_elements);
+    suppressed_bids.set(response.suppressed_bids);
+    await tick();
+    buttonEnabler();
 }
 
 function setElementsVisibility(display_elements) {

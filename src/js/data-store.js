@@ -42,4 +42,5 @@ export let canvas_sizes = writable({});
 export let auction_image_html = writable('');
 export let dealer = writable('');
 export let auction_calls = writable([]);
+export let suppressed_bids = writable({});
 
