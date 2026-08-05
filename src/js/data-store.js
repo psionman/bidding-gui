@@ -21,6 +21,9 @@ export let description_visible = writable(false);
 export let auction_visible = writable(false);
 export let hand_visible = writable(false);
 export let preamble_visible = writable(false);
+export let correct_response_visible = writable(false);
+export let show_correct = writable(false);
+export let show_wrong = writable(false);
 
 export let theme = writable('');
 export let title = writable('');

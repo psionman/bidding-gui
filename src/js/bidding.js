@@ -10,6 +10,7 @@ export function buttonEnabler() {
     enableAllLevelButtons(true)
     disableAllDenomButtons()
     const suppressed = get(suppressed_bids);
+    console.log(suppressed);
     BIDDING_LEVELS.forEach(level => {
         if ( level < suppressed.level ) {
             btn = document.getElementById(`bidding-button-${level}`);
@@ -19,6 +20,11 @@ export function buttonEnabler() {
             }
         }
     });
+    
+    if (suppressed.suppress_denoms === undefined) {
+        return;
+    }
+    
     suppressed.suppress_denoms.forEach(denom => {
         btn = document.getElementById(`bidding-button-${denom}`);
         if (btn) {
@@ -73,6 +79,9 @@ export function disableAllDenomButtons() {
 
 export function enableDenomsAfterLevelSelected(level) {
     const suppressed = get(suppressed_bids);
+    if (suppressed === undefined) {
+        return;
+    }
     enableAllDenomButtons(true);
     
     if (level > suppressed.level) {
@@ -83,6 +92,10 @@ export function enableDenomsAfterLevelSelected(level) {
     
     for (let i = 0; i < auction_denom.length; i++) {
         suppress_denoms.push(auction_denom[i]);
+    }
+
+    if (suppressed.suppress_denoms === undefined) {
+        return;
     }
     suppress_denoms.forEach(denom => {
         const btn = document.getElementById(`bidding-button-${denom}`);

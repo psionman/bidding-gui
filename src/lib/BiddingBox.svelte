@@ -200,6 +200,10 @@ import {
     selected_denom,
     selected_level,
     selected_modifier,
+    correct_response_visible,
+    show_correct,
+    show_wrong,
+    
 } from '../js/data-store'
 import { buttonEnabler, enableDenomsAfterLevelSelected } from '../js/bidding';
 
@@ -216,6 +220,7 @@ function levelClicked(value) {
         return;
     }
     $selected_level = value;
+    $selected_denom = '';
     $selected_bid = '';
     enableDenomsAfterLevelSelected($selected_level);
 
@@ -223,11 +228,17 @@ function levelClicked(value) {
         bidClicked();
     }
     $selected_modifier = '';
+    $correct_response_visible = false;
+    $show_correct = false;
+    $show_wrong = false;
 }
 
 function bidClicked() {
     $selected_bid = $selected_level + $selected_denom;
-    }
+    $correct_response_visible = false;
+    $show_correct = false;
+    $show_wrong = false;
+}
 
 function suitClicked(value) {
     $selected_denom = value;

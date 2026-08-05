@@ -21,7 +21,7 @@ import {
     preamble_visible,
     suppressed_bids,
 } from './data-store';
-import {buttonEnabler} from './bidding';
+import {buttonEnabler, disableAllDenomButtons} from './bidding';
 
 import { conventionsSelected, getStaticData } from './api';
 
@@ -42,9 +42,12 @@ export async function getNewQuestion() {
     dealer.set(response.dealer);
     auction_calls.set(response.auction);
     setElementsVisibility(response.display_elements);
-    suppressed_bids.set(response.suppressed_bids);
-    await tick();
-    buttonEnabler();
+    suppressed_bids.set(response.bid_suppression);
+    await tick()
+    if (response.bid_suppression !== undefined) {
+        buttonEnabler();
+    }
+    disableAllDenomButtons()
 }
 
 function setElementsVisibility(display_elements) {

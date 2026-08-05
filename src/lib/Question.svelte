@@ -1,9 +1,10 @@
 <main>
-        <h1>Bidding practice</h1>
-    {#if $hide_title || !$title}
-        <h2>{$theme}</h2>
+    <h1>Bidding practice</h1>
+
+    {#if $hide_title }
+        <!-- <h2>{$theme}</h2> -->
     {:else}
-        <h2>{$theme} - {$title}</h2>
+        <h2>{$theme}</h2>
         <!-- <h3>{$subtitle}</h3> -->
     {/if}
 
@@ -44,12 +45,17 @@
                 {/each}
             </div>
         {/if}
-            {#if show_correct}
+            {#if $show_correct}
                     <div class="correct">Correct</div>
-                {:else if show_wrong}
-                    <span class="wrong">Wrong</span>
+                {:else if $show_wrong}
+                    <div id="wrong-container"><span class="wrong">Wrong</span>
+                    <button class="select-button"
+                    on:click={showCorrectResponse}>Show correct</button></div>
                 {:else}
                     <span class="blank-line">&nbsp;</span>
+                {/if}
+                {#if $correct_response_visible}
+                    <div class="correct">Correct response: {$correct_response}</div>
                 {/if}
 
         <div class="buttons" id="next-button">
@@ -100,6 +106,13 @@ main {
     font-size: 1.5vw;
     display: block;
 }
+#wrong-container {
+    margin-left: 45%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1vw;
+}
 #hand-image {
     border: 2px solid black;
 }
@@ -133,17 +146,17 @@ import {
     selected_denom,
     selected_level,
     selected_modifier,
+    show_correct,
+    show_wrong,
 }
 from '../js/data-store'
 import { getNewQuestion } from "../js/common";
 import { displayHand } from "../js/card-display";
 import { setAuctionHTML} from "../js/auction";
-import { auction_calls } from "../js/data-store";
+import { auction_calls, correct_response_visible } from "../js/data-store";
     import { get } from 'svelte/store';
 
 let bid_html = '';
-let show_correct = false;
-let show_wrong = false;
 let selected_option = ''
 
 $: getSelection($selected_bid);
@@ -186,13 +199,13 @@ function getBidHTML(bid) {
 }
 
 function showCorrectWrong(bid) {
-    show_correct = false;
-    show_wrong = false;
+    $show_correct = false;
+    $show_wrong = false;
     if (!(bid === '')) {
         if (bid === $correct_response) {
-            show_correct = true;
+            $show_correct = true;
         } else {
-            show_wrong = true;
+            $show_wrong = true;
         }
     }
 }
@@ -201,18 +214,23 @@ async function nextQuestion() {
     await getNewQuestion();
     displayHand();
     setAuctionHTML(['cursor']);
-    show_correct = false;
-    show_wrong = false;
+    $show_correct = false;
+    $show_wrong = false;
     bid_html = '';
     selected_option = '';
     $selected_denom = '';
     $selected_level = 0;
     $selected_modifier = '';
+    $correct_response_visible = false;
 }
 
 function displayConventionText() {
     $question_visible = false;
     $show_save_section = false;
     $description_visible = true;
+}
+
+function showCorrectResponse() {
+    $correct_response_visible = true;
 }
 </script>
