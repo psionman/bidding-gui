@@ -1,3 +1,4 @@
+# netlify.toml
 [dev]
   command = "npm run dev"
   functions = "netlify/functions"

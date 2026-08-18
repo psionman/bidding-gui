@@ -19,16 +19,10 @@ function getParams(data) {
 	};
 }
 
-export async function getDataFRomAPIServer(data) {
-    let params = getParams(data);
-
-    let data_raw = await postDataToAPI('<url>', params);
-    return data_raw;
-}
-
 async function getDataFromAPI(uri, params = null) {
 
     let endpoint = `${API_DOMAIN}${uri}/`;
+    console.log("endpoint", endpoint);
 
     if (params) {
         endpoint += `?${new URLSearchParams(params)}`;
