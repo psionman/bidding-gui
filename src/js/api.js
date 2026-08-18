@@ -22,7 +22,6 @@ function getParams(data) {
 async function getDataFromAPI(uri, params = null) {
 
     let endpoint = `${API_DOMAIN}${uri}/`;
-    console.log("endpoint", endpoint);
 
     if (params) {
         endpoint += `?${new URLSearchParams(params)}`;
