@@ -1,5 +1,8 @@
 # History
 
+## Version 0.0.2 - 18 Aug 2026
+1. Added help
+
 ## Version 0.0.1 - 29 Jul 2026
 1. Added static data loading
 2. Added card display
