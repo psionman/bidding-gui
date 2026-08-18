@@ -1,31 +1,40 @@
-<div id="save-section">
-    <span id="save-widgets">
-        <span class="checkbox-widgets">
-            <input type="checkbox"
-                class="check-button-text"
-                id="hide-title"
-                checked={$hide_title}
-                on:change={toggleHideTitle}>
-            <label for="save-selection">&nbsp; Hide title?</label>
-        </span>
-        {#if $show_save}
+{#if $show_save_section}
+    <div id="save-section">
+        <span id="save-widgets">
+            {#if !$help_visible}
                 <span class="checkbox-widgets">
                     <input type="checkbox"
                         class="check-button-text"
-                        id="save-selection"
-                        checked={$save_selection}
-                        on:change={toggleSaveSelection}>
-                    <label for="save-selection">&nbsp; Save selection?</label>
+                        id="hide-title"
+                        checked={$hide_title}
+                        on:change={toggleHideTitle}>
+                    <label for="hide-title">&nbsp; Hide title?</label>
                 </span>
-        {/if}
-        <div class="small-text">(sets cookie)</div>
-        {#if $question_visible}
-            <div class="orange-text clickable" on:click={returnToSelection}>
-                Return to selection screen
-            </div>
-        {/if}
-    </span>
-</div>
+            {/if}
+            {#if $show_save}
+                    <span class="checkbox-widgets">
+                        <input type="checkbox"
+                            class="check-button-text"
+                            id="save-selection"
+                            checked={$save_selection}
+                            on:change={toggleSaveSelection}>
+                        <label for="save-selection">&nbsp; Save selection?</label>
+                    </span>
+                <div class="small-text">(sets cookie)</div>
+            {/if}
+            {#if !$help_visible}
+                <div class="orange-text clickable" on:click={displayHelp}>
+                    Help
+                </div>
+            {/if}
+            {#if $question_visible}
+                <div class="orange-text clickable" on:click={returnToSelection}>
+                    Return to selection screen
+                </div>
+            {/if}
+        </span>
+    </div>
+{/if}
 
 <style>
 #save-section {
@@ -51,6 +60,9 @@ import {
     show_save,
     selector_visible,
     question_visible,
+    help_visible,
+    visible_state,
+    show_save_section,
 } from '../js/data-store'
 
 
@@ -79,5 +91,17 @@ function returnToSelection() {
     $question_visible = false;
     $show_save = true;
     resetData();
+}
+
+function displayHelp() {
+    $visible_state = {
+        question: $question_visible,
+        selector: $selector_visible,
+        show_save: $show_save,
+    }
+    $help_visible = true;
+    $question_visible = false;
+    $show_save = false;
+    $selector_visible = false;
 }
 </script>

@@ -16,6 +16,8 @@ export let selected_conventions = writable([]);
 export let static_data = writable({});
 
 export let selector_visible = writable(true);
+export let help_visible = writable(false);
+export let about_visible = writable(false);
 export let question_visible = writable(false);
 export let description_visible = writable(false);
 export let auction_visible = writable(false);
@@ -46,4 +48,5 @@ export let auction_image_html = writable('');
 export let dealer = writable('');
 export let auction_calls = writable([]);
 export let suppressed_bids = writable({});
+export let visible_state = writable({question: false, selector: false, show_save: false});
 

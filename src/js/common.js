@@ -96,7 +96,7 @@ export function resetData() {
     subtitle.set("");
     preamble.set("");
     question.set("");
-    options.set("");
+    options.set([]);
     correct_response.set("");
     convention_description.set("");
     hand_cards.set([]);

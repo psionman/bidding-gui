@@ -1,24 +1,30 @@
-<main>
+
     {#if $selector_visible}
-        <h1>Bidding Practice</h1>
+    <div class="centred">
+        <h1>Bidding  Practice</h1>
         <h3>Select conventions from the list below and practice your bidding.</h3>
-            <Selector />
-        <div>
-            <button class="select-button"
-            on:click={bidding}>Practice bidding</button>
-        </div>
-    {:else}
+
+    <Selector />
+
+    <div>
+        <button class="select-button"
+        on:click={bidding}>Practice bidding</button>
+    </div>
+    </div>
+    {:else if $question_visible}
         <Question />
     {/if}
     <Description />
-    {#if $show_save_section}
-        <div class="bottom-right">
-            <SaveSection />
-        </div>
-    {/if}
-</main>
+    <Help />
+    <About />
+    <div class="bottom-right">
+        <SaveSection />
+    </div>
 
 <style>
+.centred {
+	text-align: center;
+}
 </style>
 
 <script>
@@ -27,6 +33,8 @@ import SaveSection from "./lib/SaveSection.svelte";
 import Selector from "./lib/Selector.svelte";
 import Question from "./lib/Question.svelte";
 import Description from "./lib/Description.svelte";
+import Help from "./lib/Help.svelte";
+import About from "./lib/About.svelte";
 import {
     selector_visible,
     question_visible,
@@ -35,6 +43,8 @@ import {
     show_save,
     show_save_section,
     question,
+    help_visible,
+    about_visible,
 } from './js/data-store'
 import { getNewQuestion, initialiseStaticData } from "./js/common";
 

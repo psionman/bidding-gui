@@ -21,6 +21,7 @@ function getParams(data) {
 
 export async function getDataFRomAPIServer(data) {
     let params = getParams(data);
+
     let data_raw = await postDataToAPI('<url>', params);
     return data_raw;
 }
@@ -56,21 +57,14 @@ async function getDataFromAPI(uri, params = null) {
 }
 
 async function postDataToAPI(uri, params = null) {
-    if ( !params ) params = getParams() || {};
+    if (!params) params = getParams() || {};
     const endpoint = `${API_DOMAIN}${uri}/`;
     try {
-        const csrftoken = await getOrRefreshCsrfToken();
-        if (!csrftoken) throw new Error('No CSRF token available');
-    if (get(logging_level) <= LOGGING_LEVEL['info']) {
-        console.log(`[POST] Using token: ${csrftoken}`);
-    }
         const response = await fetch(endpoint, {
             method: 'POST',
-            credentials: 'include',
             cache: 'no-store',
             headers: {
                 'Content-Type': 'application/json',
-                'X-CSRFToken': csrftoken,
             },
             body: JSON.stringify(params),
         });
@@ -80,7 +74,7 @@ async function postDataToAPI(uri, params = null) {
         }
         const data = await response.json();
         if ('error' in data) {
-            alert(`Error: ${data.error}`)
+            alert(`Error: ${data.error}`);
             return data;
         }
         return data;

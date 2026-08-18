@@ -5,7 +5,7 @@
 </main>
 
     {#if $description_visible}
-        <div class="bottom-right">
+        <div class="bottom-right-close">
             <p class="orange-text clickable" on:click={close}>Close</p>
         </div>
     {/if}

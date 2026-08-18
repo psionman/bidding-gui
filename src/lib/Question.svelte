@@ -1,4 +1,4 @@
-<main>
+<div class="centred">
     <h1>Bidding practice</h1>
 
     {#if $hide_title }
@@ -45,18 +45,18 @@
                 {/each}
             </div>
         {/if}
-            {#if $show_correct}
-                    <div class="correct">Correct</div>
-                {:else if $show_wrong}
-                    <div id="wrong-container"><span class="wrong">Wrong</span>
-                    <button class="select-button"
-                    on:click={showCorrectResponse}>Show correct</button></div>
-                {:else}
-                    <span class="blank-line">&nbsp;</span>
-                {/if}
-                {#if $correct_response_visible}
-                    <div class="correct">Correct response: {$correct_response}</div>
-                {/if}
+        {#if $show_correct}
+                <div class="correct">Correct</div>
+            {:else if $show_wrong}
+                <div id="wrong-container"><span class="wrong">Wrong</span>
+                <button class="select-button"
+                on:click={showCorrectResponse}>Show correct</button></div>
+            {:else}
+                <span class="blank-line">&nbsp;</span>
+            {/if}
+            {#if $correct_response_visible}
+                <div><span class="correct">Correct response:</span> {@html $correct_response}</div>
+            {/if}
 
         <div class="buttons" id="next-button">
             <button class="select-button"
@@ -70,10 +70,14 @@
             <SaveSection />
         </div>
         {/if}
-</main>
+</div>
 
 <style>
+.centred {
+	text-align: center;
+}
 .options {
+    margin-top: 2vh;
     margin-left: 45%;
     gap: 1vh;
     display: flex;
@@ -99,7 +103,6 @@ main {
 .correct {
     color: green;
     font-size: 1.5vw;
-    display: block;
 }
 .wrong {
     color:  red;
@@ -201,6 +204,7 @@ function getBidHTML(bid) {
 function showCorrectWrong(bid) {
     $show_correct = false;
     $show_wrong = false;
+    $correct_response_visible = false;
     if (!(bid === '')) {
         if (bid === $correct_response) {
             $show_correct = true;

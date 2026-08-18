@@ -76,7 +76,7 @@ button:focus {
 
 main {
 	position: relative;
-	text-align: center;
+	/* text-align: center; */
 	padding: 1em;
 	max-width: 240px;
 	margin: 0 auto;
@@ -236,6 +236,12 @@ label {
 	right: 1vw;
 }
 
+.bottom-right-close {
+	position: fixed;
+	bottom: 1vh;
+	right: 2vw;
+}
+
 .red-fg {
 	color: red;
 }
@@ -296,4 +302,27 @@ label {
     font-weight: bold;
     width: 3vw;
     border-radius: 0.5vh;
+}
+
+.close-btn {
+    position: absolute;
+    /* position: relative; */
+    top: 0.25vh;
+    right: 0.25vh;
+    width:24px;
+    height: 24px;
+
+    border: 2px solid #888;
+    border-radius: 8px;
+
+    display: grid;
+    place-items: center;
+    line-height: 0;
+
+    font-size: 1rem;
+    font-weight: bold;
+    color: #888;
+
+    cursor: pointer;
+    transition: all 0.2s ease;
 }

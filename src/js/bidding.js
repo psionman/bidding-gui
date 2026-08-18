@@ -10,7 +10,6 @@ export function buttonEnabler() {
     enableAllLevelButtons(true)
     disableAllDenomButtons()
     const suppressed = get(suppressed_bids);
-    console.log(suppressed);
     BIDDING_LEVELS.forEach(level => {
         if ( level < suppressed.level ) {
             btn = document.getElementById(`bidding-button-${level}`);
