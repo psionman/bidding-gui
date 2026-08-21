@@ -87,109 +87,111 @@
     padding-right: 1vw;
     padding-bottom: 1vw;
 }
+
+#bidding-box-popup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: #eee;
+    padding: 0.5vw;
+    gap: 0.5vw;
+
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    width: min(35vw, 95vw);
+    max-width: 480px;
+    box-sizing: border-box;
+}
+
+#bidding-levels,
+#bidding-suits,
+#bidding-modifiers {
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1vw;
+}
+
+.bidding-button {
+    background-color: #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    border-style: solid;
+    border-radius: 1vh;
+    border-width: 0.25vh;
+    border-color: black;
+    cursor: pointer;
+}
+
+.bidding-button.selected {
+    /* background: #0066ff !important; */
+    background: rgb(251, 232, 127) !important;
+    /* color: white !important; */
+    transform: scale(1.2) !important;
+    box-shadow: 0 0 20px gold !important;
+}
+
+.bidding-button:disabled {
+    background-color: #666;
+    color: #999;
+    cursor: not-allowed;
+    opacity: 0.5;
+    border-color: #444;
+}
+
+.level-button {
+    height: clamp(32px, 4vh, 48px);
+    width: clamp(28px, 3vw, 44px);
+    font-size: clamp(14px, 2vh, 20px);
+    font-weight: 1000;
+}
+
+.suit-button {
+    width: clamp(40px, 6vh, 56px);
+    height: clamp(36px, 5vh, 48px);
+    font-size: clamp(20px, 3vh, 32px);
+}
+
+.modifier-button {
+    height: clamp(32px, 4vh, 48px);
+    font-size: clamp(16px, 2.5vh, 24px);
+    padding-top: 0;
+}
+
+.nt-button {
+    width: clamp(40px, 6vh, 56px);
+    height: clamp(36px, 5vh, 48px);
+    font-size: clamp(16px, 2.5vh, 24px);
+}
+
+.pass-button {
+    color: white;
+    background-color: green;
+}
+
+.double-button {
+    color: white;
+    background-color: red;
+}
+
+.redouble-button {
+    color: white;
+    background-color: blue;
+}
+
+@media (max-width: 480px) {
     #bidding-box-popup {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        background-color: #eee;
-        padding: 0.5vw;
-        gap: 0.5vw;
-
-        position: relative;
-        margin-left: auto;
-        margin-right: auto;
-        width: 35vw;
+        gap: 0.75rem;
+        padding: 0.75rem;
     }
-
-    #bidding-levels {
-        margin: 0 auto;
-        display: flex;
-        gap: 1vw;
-    }
-
-    #bidding-suits {
-        margin: 0 auto;
-        display: flex;
-        column-gap: 1vw;
-    }
-
-    #bidding-modifiers {
-        margin: 0 auto;
-        display: flex;
-        column-gap: 1vw;
-    }
-
-    .bidding-button {
-        background-color: #ccc;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-
-        border-style: solid;
-        border-radius: 1vh;
-        border-width: 0.25vh;
-        border-color: black;
-        cursor: pointer;
-    }
-
-    .bidding-button.selected {
-        /* background: #0066ff !important; */
-        background: rgb(251, 232, 127) !important;
-        /* color: white !important; */
-        transform: scale(1.2) !important;
-        box-shadow: 0 0 20px gold !important;
-    }
-
-    .bidding-button:disabled {
-        background-color: #666;
-        color: #999;
-        cursor: not-allowed;
-        opacity: 0.5;
-        border-color: #444;
-    }
-
-    .level-button {
-        height: 4vh;
-        width: 3vw;
-        font-size: 2vh;
-        font-weight: 1000;
-    }
-
-    .suit-button {
-        width: 6vh;
-        height: 5vh;
-        font-size: 3vh;
-    }
-
-    .modifier-button {
-        height: 4vh;
-        font-size: 2.5vh;
-        padding-top: -3vh;
-    }
-
-    .nt-button {
-        width: 6vh;
-        height: 5vh;
-        font-size: 2.5vh;
-    }
-
-    .pass-button {
-        color: white;
-        background-color: green;
-    }
-
-    .double-button {
-        color: white;
-        background-color: red;
-    }
-
-    .redouble-button {
-        color: white;
-        background-color: blue;
-    }
+}
 
 </style>
 

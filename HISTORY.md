@@ -1,5 +1,8 @@
 # History
 
+## Version 0.0.3 - 21 Aug 2026
+1. Gui suitable for mobile devices
+
 ## Version 0.0.2 - 18 Aug 2026
 1. Added help
 
