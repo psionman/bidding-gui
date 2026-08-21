@@ -51,32 +51,41 @@ function setSizingVariables() {
 }
 
 export function getScale() {
-    // Get width and height of the window excluding scrollbars
     var document_width = window.innerWidth;
-    var document_height = window.innerHeight;
-    var standard_aspect_ratio = MAX_WINDOW_WIDTH / MAX_WINDOW_HEIGHT;
-    var current_aspect_ratio = document_width / document_height;
-    var _scale = 0;
-
-    if (current_aspect_ratio > standard_aspect_ratio) {
-        // Screen is wider than standard aspect ratio so scale depends on height
-        if (document_height >= MAX_WINDOW_HEIGHT) {
-            _scale = STANDARD_SCALE;
-        } else {
-            _scale = STANDARD_SCALE * document_height / MAX_WINDOW_HEIGHT;
-        }
-    } else {
-        // Screen is higher than standard aspect ratio so scale depends on width
-        if (document_width >= MAX_WINDOW_WIDTH) {
-            _scale = STANDARD_SCALE;
-        } else {
-            _scale = STANDARD_SCALE * document_width / MAX_WINDOW_WIDTH;
-        }
-            _scale = STANDARD_SCALE * document_width / MAX_WINDOW_WIDTH;
-    }
-    scale.set(_scale)
+    // Match the same container width used by #auction-popup / #bidding-box-popup
+    var target_canvas_width = Math.min(480, Math.max(300, document_width * 0.3));
+    var _scale = target_canvas_width / (13 * CARD_WIDTH);
+    scale.set(_scale);
     return scale;
 }
+
+// export function getScale() {
+//     // Get width and height of the window excluding scrollbars
+//     var document_width = window.innerWidth;
+//     var document_height = window.innerHeight;
+//     var standard_aspect_ratio = MAX_WINDOW_WIDTH / MAX_WINDOW_HEIGHT;
+//     var current_aspect_ratio = document_width / document_height;
+//     var _scale = 0;
+
+//     if (current_aspect_ratio > standard_aspect_ratio) {
+//         // Screen is wider than standard aspect ratio so scale depends on height
+//         if (document_height >= MAX_WINDOW_HEIGHT) {
+//             _scale = STANDARD_SCALE;
+//         } else {
+//             _scale = STANDARD_SCALE * document_height / MAX_WINDOW_HEIGHT;
+//         }
+//     } else {
+//         // Screen is higher than standard aspect ratio so scale depends on width
+//         if (document_width >= MAX_WINDOW_WIDTH) {
+//             _scale = STANDARD_SCALE;
+//         } else {
+//             _scale = STANDARD_SCALE * document_width / MAX_WINDOW_WIDTH;
+//         }
+//             _scale = STANDARD_SCALE * document_width / MAX_WINDOW_WIDTH;
+//     }
+//     scale.set(_scale)
+//     return scale;
+// }
 
 export function displayHand() {
     if (!get(hand_visible)) {
