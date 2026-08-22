@@ -1,5 +1,8 @@
 # History
 
+## Version 0.0.4 - 22 Aug 2026
+1.  Resize hand display when window resizes
+
 ## Version 0.0.3 - 21 Aug 2026
 1. Gui suitable for mobile devices
 
