@@ -35,7 +35,7 @@ let suit_column = -1;
 setSizingVariables()
 
 window.onresize = async function () {
-    // await displayBoardElements();
+    displayHand();
 }
 
 function setSizingVariables() {
@@ -62,7 +62,7 @@ export function displayHand() {
     if (!get(hand_visible)) {
         return;
     }
-    // Display all of the cards for a hand
+    setSizingVariables();   // ← recalculate using the now-existing container
     last_suit = '';
     suit_row = -1;
     suit_column = -1;
