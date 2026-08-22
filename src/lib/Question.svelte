@@ -1,3 +1,4 @@
+<!-- Question.svelte -->
 <div class="centred">
     <h1>Bidding practice</h1>
 
@@ -102,11 +103,11 @@ main {
 
 .correct {
     color: green;
-    font-size: 1.5vw;
+    font-size: clamp(16px, 1.5vw, 22px);
 }
 .wrong {
     color:  red;
-    font-size: 1.5vw;
+    font-size: clamp(16px, 1.5vw, 22px);
     display: block;
 }
 #wrong-container {
@@ -115,8 +116,16 @@ main {
     flex-direction: row;
     align-items: center;
     gap: 1vw;
+}#hand-container {
+    width: clamp(300px, 30vw, 480px);
+    max-width: 95vw;
+    margin: 0 auto;
 }
 #hand-image {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    height: auto;
     border: 2px solid black;
 }
 .blank-line {

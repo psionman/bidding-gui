@@ -1,4 +1,4 @@
-<main>
+<!-- BiddingBoxsvelte -->
     <div id="bidding-box-popup" class="display-panel">
 
         <div id="bidding-levels">
@@ -73,7 +73,6 @@
         </div>
 
     </div>
-</main>
 
 <style>
 .display-panel {
@@ -95,14 +94,15 @@
     justify-content: center;
     text-align: center;
     background-color: #eee;
-    padding: 0.5vw;
-    gap: 0.5vw;
+    padding: 0.4vh 0.5vw;
+    gap: 0.35vh;
+    margin: 1vh;
 
     position: relative;
     margin-left: auto;
     margin-right: auto;
-    width: min(35vw, 95vw);
-    max-width: 480px;
+    width: clamp(340px, 45vw, 560px);
+    max-width: 95vw;
     box-sizing: border-box;
 }
 
@@ -111,9 +111,9 @@
 #bidding-modifiers {
     margin: 0 auto;
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     justify-content: center;
-    gap: 1vw;
+    gap: 0.8vw;
 }
 
 .bidding-button {
@@ -147,28 +147,28 @@
 }
 
 .level-button {
-    height: clamp(32px, 4vh, 48px);
-    width: clamp(28px, 3vw, 44px);
-    font-size: clamp(14px, 2vh, 20px);
+    height: clamp(26px, 3.2vh, 38px);
+    width: clamp(30px, 3.5vw, 46px);
+    font-size: clamp(14px, 1.8vh, 18px);
     font-weight: 1000;
 }
 
 .suit-button {
-    width: clamp(40px, 6vh, 56px);
-    height: clamp(36px, 5vh, 48px);
-    font-size: clamp(20px, 3vh, 32px);
+    width: clamp(38px, 5vh, 50px);
+    height: clamp(28px, 3.8vh, 38px);
+    font-size: clamp(18px, 2.4vh, 26px);
 }
 
 .modifier-button {
-    height: clamp(32px, 4vh, 48px);
-    font-size: clamp(16px, 2.5vh, 24px);
-    padding-top: 0;
+    height: clamp(26px, 3.2vh, 38px);
+    font-size: clamp(14px, 2vh, 20px);
+    padding: 0 0.6vw;
 }
 
 .nt-button {
-    width: clamp(40px, 6vh, 56px);
-    height: clamp(36px, 5vh, 48px);
-    font-size: clamp(16px, 2.5vh, 24px);
+    width: clamp(38px, 5vh, 50px);
+    height: clamp(28px, 3.8vh, 38px);
+    font-size: clamp(14px, 2vh, 20px);
 }
 
 .pass-button {
@@ -188,8 +188,8 @@
 
 @media (max-width: 480px) {
     #bidding-box-popup {
-        gap: 0.75rem;
-        padding: 0.75rem;
+        gap: 0.3vh;
+        padding: 0.3vh 0.5vw;
     }
 }
 
