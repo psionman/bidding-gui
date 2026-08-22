@@ -130,12 +130,7 @@ main {
         padding-left: 1rem;
     }
 }
-#wrong-container {
-    margin-left: 45%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 1vw;
+
 }#hand-container {
     width: clamp(300px, 30vw, 480px);
     max-width: 95vw;
