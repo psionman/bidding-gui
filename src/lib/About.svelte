@@ -2,7 +2,7 @@
     <div id="about-popup" class="display-panel">
         <button class="close-btn" on:click={cancel} aria-label="Close">×</button>
         <h3>About Bidding Practice</h3>
-        <p>The Bidding Practice project was motivated by the conviction that:</p>
+        <span id="preamble">The Bidding Practice project was motivated by the conviction that:</span>
             <ul>
                 <li>there are never too many resources for the beginner at bridge;</li>
                 <li>conventions are easier to learn when you see relevant examples</li>
@@ -83,6 +83,9 @@ h3, h4 {
 
 li {
     margin-left:10w;
+}
+#preamble {
+    margin-top: 0.5vh;
 }
 a {
     color:  blue;
