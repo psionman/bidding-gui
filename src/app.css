@@ -269,7 +269,7 @@ label {
     font-size: clamp(10px, 1.6vh, 16px);
     vertical-align: top;
     position: relative;
-    top: -0.1em;
+    /* top: -0.1em; */
 }
 
 .nt-call {
