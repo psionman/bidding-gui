@@ -12,7 +12,8 @@
         flex-direction: column;
         position: relative;
         padding: 1vh;
-        width: clamp(300px, 30vw, 480px);
+        /* width: clamp(300px, 30vw, 480px); */
+        width: clamp(260px, 26vw, 420px);
         box-sizing: border-box;
         align-items: center;
         justify-content: center;

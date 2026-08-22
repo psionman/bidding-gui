@@ -101,7 +101,8 @@
     position: relative;
     margin-left: auto;
     margin-right: auto;
-    width: clamp(340px, 45vw, 560px);
+    /* width: clamp(340px, 45vw, 560px); */
+    width: clamp(380px, 50vw, 620px);
     max-width: 95vw;
     box-sizing: border-box;
 }
