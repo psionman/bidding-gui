@@ -116,10 +116,16 @@ main {
     color:  red;
     font-size: clamp(16px, 1.5vw, 22px);
     display: block;
+}#wrong-container {
+    margin-left: 45%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1vw;
 }
 
 @media (max-width: 480px) {
-    .wrong-container {
+    #wrong-container {
         margin-left: 0;
         padding-left: 1rem;
     }
