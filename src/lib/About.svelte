@@ -45,7 +45,7 @@
 
 <style>
 h3, h4 {
-    margin-top: 1vh;
+    margin: 0vh;
     color: black;   
 }
 
@@ -82,7 +82,7 @@ h3, h4 {
 }
 
 li {
-    margin-left:2vw;
+    margin-left:10w;
 }
 a {
     color:  blue;
