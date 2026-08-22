@@ -116,7 +116,8 @@ main {
     color:  red;
     font-size: clamp(16px, 1.5vw, 22px);
     display: block;
-}#wrong-container {
+}
+#wrong-container {
     margin-left: 45%;
     display: flex;
     flex-direction: row;
@@ -131,7 +132,7 @@ main {
     }
 }
 
-}#hand-container {
+#hand-container {
     width: clamp(300px, 30vw, 480px);
     max-width: 95vw;
     margin: 0 auto;
