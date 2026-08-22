@@ -86,6 +86,13 @@
     align-items: flex-start;
 }
 
+@media (max-width: 480px) {
+    .options {
+        margin-left: 0;
+        padding-left: 1rem;
+    }
+}
+
 .buttons {
     display: flex;
     flex-direction: column;
