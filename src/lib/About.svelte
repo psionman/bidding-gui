@@ -59,6 +59,13 @@ h3, h4 {
     align-items: flex-start;
     background-color: #ccc;
     margin: 0 auto;
+    width: clamp(280px, 85vw, 480px);
+    max-width: 95vw;
+    max-height: 85vh;
+    overflow-y: auto;
+    box-sizing: border-box;
+    padding: 1rem 1.25rem;
+    text-align: left;
 }
 
 #versions {
@@ -71,6 +78,7 @@ h3, h4 {
     display: flex;
     flex-direction: row;
     gap: 0.5vw;
+    align-self: center;
 }
 
 li {

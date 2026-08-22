@@ -8,19 +8,21 @@
     </div>
 {/if}
 
-
 <style>
     #help-popup {
         display: flex;
         position: fixed;
-        width: 15vw;
+        width: clamp(240px, 30vw, 400px);
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
         flex-direction: column;
         align-items: center;
+        gap: 0.75rem;
+        padding: 1.5rem 1rem;
         background-color: #ccc;
         margin: 0 auto;
+        box-sizing: border-box;
     }
 </style>
 
