@@ -134,9 +134,10 @@ main {
 }
 
 #hand-container {
-    width: clamp(300px, 30vw, 480px);
-    max-width: 95vw;
+    width: 100%;
+    max-width: 100%;
     margin: 0 auto;
+
 }
 #hand-image {
     display: block;
