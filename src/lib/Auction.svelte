@@ -25,7 +25,7 @@
 
     #dealer-display {
         margin-bottom: 1vh;
-        font-size: clamp(14px, 2.2vh, 20px);
+        font-size: clamp(10px, 2.2vh, 20px);
     }
 
     #auction-table-main {
