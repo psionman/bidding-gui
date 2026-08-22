@@ -76,10 +76,16 @@ button:focus {
 
 main {
 	position: relative;
-	/* text-align: center; */
+	text-align: center;
 	padding: 1em;
-	max-width: 240px;
+	max-width: 100%;
 	margin: 0 auto;
+}
+
+@media (min-width: 640px) {
+	main {
+		max-width: 640px;
+	}
 }
 
 a {
