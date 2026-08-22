@@ -128,7 +128,8 @@ main {
 @media (max-width: 480px) {
     #wrong-container {
         margin-left: 0;
-        padding-left: 1rem;
+        justify-content: center;
+        width: 100%;
     }
 }
 
