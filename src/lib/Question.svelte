@@ -112,13 +112,6 @@ main {
     color: green;
     font-size: clamp(16px, 1.5vw, 22px);
 }
-
-@media (max-width: 480px) {
-    .correct {
-        margin-left: 0;
-        padding-left: 1rem;
-    }
-}
 .wrong {
     color:  red;
     font-size: clamp(16px, 1.5vw, 22px);
@@ -126,7 +119,7 @@ main {
 }
 
 @media (max-width: 480px) {
-    .wrong {
+    .wrong-container {
         margin-left: 0;
         padding-left: 1rem;
     }
