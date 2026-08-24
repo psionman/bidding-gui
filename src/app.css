@@ -278,6 +278,12 @@ label {
     top: -0.1em;
 }
 
+@media (max-width: 480px) {
+    .call-suit {
+        top: -0.05em;   /* phone value — adjust to taste */
+    }
+}
+
 .nt-call {
     font-weight: 600;
 }
