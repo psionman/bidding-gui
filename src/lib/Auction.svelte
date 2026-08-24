@@ -36,7 +36,6 @@
         gap: clamp(6px, 1vh, 14px);
         column-gap: clamp(8px, 2vw, 24px);
         width: 100%;
-        overflow-x: auto;
         font-size: clamp(12px, 1.8vh, 18px);
     }
  </style>

@@ -26,7 +26,7 @@
         {/if}
         {$question}
 
-        {#if $options == ''}
+        {#if $options.length == 0}
             <BiddingBox />
         {:else}
             <div class="options">
