@@ -281,7 +281,7 @@ label {
 @media (max-width: 480px) {
     .call-suit {
         top: -0.05em;   /* phone value — adjust to taste */
-		font-size: 25px
+		font-size: 20px
     }
 }
 
