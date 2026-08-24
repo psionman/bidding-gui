@@ -139,6 +139,13 @@ main {
     margin: 0 auto;
 
 }
+
+@media (min-width: 640px) {
+    #hand-container {
+        max-width: 480px;
+    }
+}
+
 #hand-image {
     display: block;
     margin: 0 auto;

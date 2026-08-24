@@ -1,4 +1,4 @@
-
+// js/card-display.js
 import { get } from 'svelte/store';
 import { 
     static_data, 
