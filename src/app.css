@@ -181,6 +181,7 @@ h3 {
     grid-template-columns: 20px auto;
     align-items: center;
     gap: 6px;
+	height: 30px;
     /* width: 200px; */
 }
 
