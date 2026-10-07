@@ -22,6 +22,7 @@ export let question_visible = writable(false);
 export let description_visible = writable(false);
 export let auction_visible = writable(false);
 export let hand_visible = writable(false);
+export let bidding_box_visible = writable(false);
 export let preamble_visible = writable(false);
 export let correct_response_visible = writable(false);
 export let show_correct = writable(false);
@@ -49,4 +50,3 @@ export let dealer = writable('');
 export let auction_calls = writable([]);
 export let suppressed_bids = writable({});
 export let visible_state = writable({question: false, selector: false, show_save: false});
-

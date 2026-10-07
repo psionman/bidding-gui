@@ -6,27 +6,28 @@
         <!-- <h2>{$theme}</h2> -->
     {:else}
         <h2>{$theme}</h2>
+        <h2>{$title}</h2>
         <!-- <h3>{$subtitle}</h3> -->
     {/if}
 
     {#if $question_visible}
-        {#if $preamble_visible}
+        {#if $preamble_visible && $preamble}
             {@html $preamble}<br>
         {/if}
+        {$question}
 
         {#if $auction_visible}
             <Auction />
         {/if}
-        
+
         {#if $hand_visible}
             <p></p>
             <div id="hand-container">
                 <canvas id="hand-image"></canvas>
             </div>
         {/if}
-        {$question}
 
-        {#if $options.length == 0}
+        {#if $bidding_box_visible}
             <BiddingBox />
         {:else}
             <div class="options">
@@ -164,8 +165,8 @@ import BiddingBox from './BiddingBox.svelte';
 import Auction from './Auction.svelte';
 import SaveSection from './SaveSection.svelte';
 import {
-    auction_visible, 
-    selected_bid, 
+    auction_visible,
+    selected_bid,
     hand_visible } from '../js/data-store'
 
 import {
@@ -175,6 +176,7 @@ import {
     question,
     options,
     question_visible,
+    bidding_box_visible,
     description_visible,
     preamble_visible,
     hide_title,

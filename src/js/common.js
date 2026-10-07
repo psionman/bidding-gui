@@ -17,6 +17,7 @@ import {
     dealer,
     auction_calls,
     auction_visible,
+    bidding_box_visible,
     hand_visible,
     preamble_visible,
     suppressed_bids,
@@ -54,9 +55,13 @@ function setElementsVisibility(display_elements) {
     auction_visible.set(false);
     hand_visible.set(false);
     preamble_visible.set(false);
+    bidding_box_visible.set(false);
 
     if (display_elements.includes('auction')) {
         auction_visible.set(true);
+    }
+    if (display_elements.includes('bidding_box')) {
+        bidding_box_visible.set(true);
     }
     if (display_elements.includes('hand')) {
         hand_visible.set(true);
@@ -105,4 +110,4 @@ export function resetData() {
     auction_calls.set([]);
     auction_visible.set(false);
     hand_visible.set(false);
-}   
+}

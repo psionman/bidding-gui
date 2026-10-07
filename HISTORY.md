@@ -1,5 +1,8 @@
 # History
 
+## Version 0.0.5 - 7 October 2026
+1. Change visibility rules
+
 ## Version 0.0.4 - 22 Aug 2026
 1.  Resize hand display when window resizes
 

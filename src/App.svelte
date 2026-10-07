@@ -41,10 +41,7 @@ import {
     conventions,
     selected_conventions,
     show_save,
-    show_save_section,
     question,
-    help_visible,
-    about_visible,
 } from './js/data-store'
 import { getNewQuestion, initialiseStaticData } from "./js/common";
 
